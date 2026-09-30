@@ -2,16 +2,15 @@ name: ci
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'codex/msw1907-*']
   pull_request:
-  workflow_dispatch:
 
 jobs:
   # Builds the library and persists it as an artifact.
   # Later jobs can then reuse that build artifact, skipping
   # the build step.
   build:
-    runs-on: macos-latest
+    runs-on: macos-15-intel
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,7 +50,7 @@ jobs:
 
       - name: Upload test artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: test/browser/test-results
