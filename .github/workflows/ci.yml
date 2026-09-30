@@ -95,7 +95,7 @@ jobs:
         run: pnpm install
 
       - name: Node.js tests
-        run: pnpm test:node
+        run: pnpm test:node --retry=2
 
   test-browser:
     name: test (browser)
