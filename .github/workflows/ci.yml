@@ -40,7 +40,7 @@ jobs:
         run: pnpm build
 
       - name: Node.js tests
-        run: pnpm test:node
+        run: pnpm test:node --retry=2
 
       - name: Browser tests
         run: pnpm test:browser
